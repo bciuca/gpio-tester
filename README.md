@@ -17,4 +17,4 @@ In a web browser, go to `http://[your pi ip]:8080`.
 
 Once the web app loads, choose a pin mode from the GPIO list. "Out" mode will write to the GPIO when the i/o checkbox is clicked -- checked is has a value of 1 otherwise 0. "In" mode will highlight the GPIO item on the page when triggered.
 
-![](https://github.com/bciuca/gpio-tester/blob/master/public/img/webapp.png)
+![](https://github.com/bciuca/gpio-tester/blob/master/public/img/screenshot.png)
