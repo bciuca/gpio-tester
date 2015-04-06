@@ -5,7 +5,7 @@ Simple GPIO input and output tester in the web browser. Good for quickly testing
 ### Installation
 
 ```
-git clone raspi-test
+git clone https://github.com/bciuca/gpio-tester.git
 npm install
 ```
 
