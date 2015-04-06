@@ -48,13 +48,13 @@
             }
         });
 
-        function watch(pin, parentEl, cb) {
+        function watch(pin, el) {
             var listener = {
                 pin: pin,
-                parentEl: parentEl,
+                element: el,
                 handler: function(state) {
                     console.log('handling pin', listener.pin);
-                    parentEl.querySelector('span').classList[state.value ? 'add' : 'remove']('gpio-on');
+                    el.querySelector('span').classList[state.value ? 'add' : 'remove']('gpio-on');
                 }
             };
 
@@ -65,7 +65,7 @@
             var listener = listeners[pin];
             if (!listener) return;
             
-            listener.parentEl && listener.parentEl.classList.remove('gpio-on');
+            listener.el && listener.el.classList.remove('gpio-on');
             
             delete listeners[pin];
         }

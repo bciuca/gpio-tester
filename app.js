@@ -6,7 +6,6 @@ var server = restify.createServer();
 var io = require('socket.io')(8081);
 var fs = require('fs');
 var watchers = {};
-var exported = {};
 
 server.get(/\/?.*/, restify.serveStatic({
     directory: './public',
@@ -19,7 +18,6 @@ function setGpio(options) {
     var value = +options.value;
     var gpio = new Gpio(pin, 'out');
     gpio.writeSync(value);
-    exported[pin] = gpio;
     console.log('wrote to %d with val %d', pin, value);
 }
 
