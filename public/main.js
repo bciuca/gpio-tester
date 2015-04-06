@@ -54,7 +54,7 @@
                 element: el,
                 handler: function(state) {
                     console.log('handling pin', listener.pin);
-                    el.querySelector('span').classList[state.value ? 'add' : 'remove']('gpio-on');
+                    el.classList[state.value ? 'add' : 'remove']('gpio-on');
                 }
             };
 
