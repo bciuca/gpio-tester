@@ -1,0 +1,15 @@
+{
+  "name": "raspi-test",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bciuca/raspi-test"
+  },
+  "description": "Test GPIO in the browser",
+  "author": "bogdan ciuca <bogdan.ciuca@gmail.com>",
+  "dependencies": {
+    "onoff": "^1.0.2",
+    "restify": "^3.0.1",
+    "socket.io": "^1.3.5"
+  }
+}
