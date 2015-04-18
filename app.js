@@ -1,17 +1,26 @@
 'use strict';
 
+console.log('starting server...');
+
+var starttime = Date.now();
+
+var HTTP_PORT = 8080;
+var SOCKET_PORT = 8081;
+
 var restify = require('restify');
 var Gpio = require('onoff').Gpio;
 var server = restify.createServer();
-var io = require('socket.io')(8081);
+var io = require('socket.io')(SOCKET_PORT);
 var fs = require('fs');
+var os = require('os');
+var dns = require('dns');
+var hostname = os.hostname();
 var watchers = {};
 
 server.get(/\/?.*/, restify.serveStatic({
     directory: './public',
     default: 'index.html'
 }));
-
 
 function setGpio(options) {
     var pin = parseInt(options.pin, 10);
@@ -84,4 +93,12 @@ io.sockets.on('connection', function (socket) {
 
 process.on('SIGINT', exit);
 process.on('SIGTERM', exit);
-server.listen(8080);
+server.listen(HTTP_PORT);
+
+dns.lookup(hostname, function(err, ip, fml) {
+    var hn = 'http://' + hostname + ':' + HTTP_PORT;
+    var inet = 'http://' + ip + ':' + HTTP_PORT;
+    console.log('Go to %s (or %s) to start the web app.', hn, inet);
+});
+
+console.log('server startup time: %d seconds', ((Date.now() - starttime)/1000).toFixed(3));
